@@ -19,7 +19,7 @@ public class BulletLinearMovement : MonoBehaviour {
 
     private void Update()
     {
-        transform.Translate(Vector3.right*Time.deltaTime*speed);
+        transform.Translate(Vector3.up*Time.deltaTime*speed);
 
         if(currentMode ==  Mode.slowDown)
         {

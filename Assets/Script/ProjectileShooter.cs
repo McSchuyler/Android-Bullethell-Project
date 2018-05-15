@@ -5,29 +5,20 @@ using UnityEngine;
 public class ProjectileShooter : MonoBehaviour {
 
     public GameObject[] shooterPoint;
-    public GameObject projectile;
+    public string bulletTag;
     public float time = 3f;
     public float shootInterval = 0.5f;
 
-    private void OnEnable()
+    private void Start()
     {
-        StartCoroutine(Shooting());
+        InvokeRepeating("Shoot", 0f, shootInterval);
     }
 
-    private void Shoot(int index)
+    private void Shoot()
     {
-        Destroy(Instantiate(projectile, shooterPoint[index].transform.position, shooterPoint[index].transform.rotation), time);
-    }
-
-    IEnumerator Shooting()
-    {
-        while(true)
+        for (int i = 0; i < shooterPoint.Length; i++)
         {
-            for(int i=0;i<shooterPoint.Length;i++)
-            {
-                Shoot(i);
-            }
-            yield return new WaitForSeconds(shootInterval);
+            ObjectPooler.instance.SpawnFromPool(bulletTag, shooterPoint[i].transform.position, shooterPoint[i].transform.rotation);
         }
     }
 }
