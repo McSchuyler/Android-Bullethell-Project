@@ -41,7 +41,6 @@ public class BulletSpear : MonoBehaviour {
     {
         bulletLiner.speed = 0f;
         bulletRotation.rotationRate = 0f;
-
     }
 
     IEnumerator Aiming()
@@ -61,7 +60,6 @@ public class BulletSpear : MonoBehaviour {
 
             yield return null;
         }
-
         ResetBullet();
         Invoke("Shoot", waitToShoot);
     }

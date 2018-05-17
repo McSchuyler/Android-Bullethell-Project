@@ -58,7 +58,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1649582668478202
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422986017021828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.0265796, y: -0.1594771, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4544148698376998}
@@ -174,8 +174,7 @@ MonoBehaviour:
   - {fileID: 1123938379784842}
   - {fileID: 1649582668478202}
   - {fileID: 1821831988653170}
-  projectile: {fileID: 1328048378086778, guid: 100931176fe436541aed2e121af10b55, type: 2}
-  time: 3
+  bulletTag: slow
   shootInterval: 0.2
 --- !u!114 &114620490484367482
 MonoBehaviour:
