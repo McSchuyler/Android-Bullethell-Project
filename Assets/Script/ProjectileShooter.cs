@@ -4,37 +4,46 @@ using UnityEngine;
 
 public class ProjectileShooter : MonoBehaviour {
 
-    public GameObject[] shooterPoint;
-    public string bulletTag;
-    public float shootInterval = 0.5f;
-    public float nextBurstInterval = 1.5f;
-
-    public enum Type
+    public enum ShootMode
     {
-        Trigger,
+        AllAtOnce,
+        OneByOne,
+        RandomNoRepeat,
+        RandomRepeat
+    };
+    public enum TriggerType
+    {
+        Event,
         Auto
     };
 
-    public enum State
-    {
-        AllFire,
-        Burst
-    };
+    public ShootMode shooterState = ShootMode.AllAtOnce;
 
-    public State shooterState = State.AllFire;
-    public Type shooterType = Type.Trigger;
+    [Header("Shooter Attribute")]
+    public GameObject[] shooterPoint;
+
+    [Space]
+    public string bulletTag;
+
+    [Tooltip("Time wait when fire bullet one by one")]
+    public float shootInterval = 0.5f;
+
+    [Tooltip("Time wait to second round. Use at Auto Trigger")]
+    public float nextBurstInterval = 1.5f;
+
+    public TriggerType triggerType = TriggerType.Event;
 
     private bool firstEnableTriggered = false;
 
     private void OnEnable()
     {
-        if(shooterType == Type.Auto)
+        if(triggerType == TriggerType.Auto)
         {
             if (firstEnableTriggered == true)
             {
-                if (shooterState == State.AllFire)
+                if (shooterState == ShootMode.AllAtOnce)
                     StartCoroutine(RepeatShooting());
-                if (shooterState == State.Burst)
+                if (shooterState == ShootMode.OneByOne)
                     StartCoroutine(IntervalShooting());
             }
             firstEnableTriggered = true;

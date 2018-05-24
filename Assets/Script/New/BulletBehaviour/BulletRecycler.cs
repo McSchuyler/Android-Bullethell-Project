@@ -6,10 +6,7 @@ public class BulletRecycler : MonoBehaviour {
 
     public bool recycleByTime;
     public float timeWaitToRecycle;
-
     public bool recycleByCollide;
-
-
 
     public string bulletTag;
 
